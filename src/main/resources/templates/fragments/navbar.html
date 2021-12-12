@@ -1,0 +1,31 @@
+<th:block th:fragment xmlns="http://www.w3.org/1999/html">
+    <!-- Guest -->
+    <th:block sec:authorize="isAnonymous()">
+        <header>
+            <div class="top-line">
+                <div class="container top-box row">
+                    <div class="leftside col-md-1">
+                        <span class="logo">
+                    <a th:href="@{/}"><img th:src="@{${logo}}" alt="MT" class="img-responsive" width="85"/></a>
+                </span>
+
+                    </div>
+                    <div class="middleside col-md-8">
+                        <p style="text-align: left">
+                            Photo Album
+                        </p>
+                    </div>
+
+                    <div class="rightside col-md-3">
+                        <div class="top-buttons">
+                            <a type="button" style="text-align: center" class="top-button btn-lg" id="btn-register"
+                               th:href="@{/pictures/add}">Add</a>
+                            <a type="button" style="text-align: center" class="top-button btn-lg" id="btn-login"
+                               th:href="@{/pictures/all}">All Pictures</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </th:block>
+</th:block>

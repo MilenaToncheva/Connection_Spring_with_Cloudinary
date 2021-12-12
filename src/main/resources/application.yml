@@ -1,0 +1,33 @@
+#Data Source Properties
+spring:
+  #Connection with DB
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/photos_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+    #the max size of the files to be loaded
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#JPA Properties
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+
+#Cloudinary
+cloudinary:
+  api-key: 961989514536863
+  api-secret: ${CLOUDINARY_API_SECRET}
+  cloud-name: mt-art-gallery
+
+#Change server port
+server:
+  port: 8080
