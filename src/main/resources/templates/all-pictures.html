@@ -14,7 +14,11 @@
             <div id="home-artworks" class="col-md-5" >
                 <img th:src="${picture.getUrl()}" class="border border-secondary" height="300px"/><br/>
                 <div id="artwork-name" th:text="${picture.getTitle()}"></div>
-                <a class="btn-artworks" th:href="@{/pictures/details/${picture.id}}">Details</a>
+                <a class="btn-artworks" th:href="@{/pictures/details/{id}(id=${picture.id})}">Details</a>
+           <form th:action="@{/pictures/delete}" th:method="delete">
+               <input type="hidden" name="public_id" th:value="${picture.publicId}"/>
+               <input type="submit" value="Delete"/>
+           </form>
             </div>
         </div>
     </div>

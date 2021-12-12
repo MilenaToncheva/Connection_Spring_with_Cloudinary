@@ -8,4 +8,6 @@ public interface PictureService {
     void add(PictureServiceModel pictureServiceModel);
 
     List<PictureServiceModel> findAll();
+
+    void delete(String publicId);
 }

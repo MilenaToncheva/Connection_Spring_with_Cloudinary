@@ -33,4 +33,9 @@ public class PictureServiceImpl implements PictureService {
                 .collect(Collectors.toList());
        return pictures;
     }
+
+    @Override
+    public void delete(String publicId) {
+        this.pictureRepository.deleteByPublicId(publicId);
+    }
 }

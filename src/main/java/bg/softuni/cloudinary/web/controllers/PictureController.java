@@ -8,11 +8,9 @@ import bg.softuni.cloudinary.web.models.PictureBindingModel;
 import bg.softuni.cloudinary.web.models.PictureViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -62,12 +60,20 @@ public class PictureController {
         pictureServiceModel.setPublicId(upload.getPublicId());
         return pictureServiceModel;
     }
+@Transactional
+    @DeleteMapping("/delete")
+    public String delete(@RequestParam("public_id") String publicId) {
+        if (cloudinaryService.delete(publicId)) {
+            this.pictureService.delete(publicId);
+        }
+        return "redirect:/pictures/all";
+    }
 
     @GetMapping("/all")
     public String getAllPictures(Model model) {
-        List<PictureViewModel> pictures= Arrays.stream(this.modelMapper.map(this.pictureService.findAll(), PictureViewModel[].class))
+        List<PictureViewModel> pictures = Arrays.stream(this.modelMapper.map(this.pictureService.findAll(), PictureViewModel[].class))
                 .collect(Collectors.toList());
-        model.addAttribute("pictures",pictures);
+        model.addAttribute("pictures", pictures);
         return "all-pictures";
     }
 }

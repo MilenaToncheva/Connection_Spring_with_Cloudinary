@@ -4,6 +4,7 @@ public class PictureViewModel {
     private String id;
     private String title;
     private String url;
+    private String publicId;
 
     public String getId() {
         return id;
@@ -27,5 +28,13 @@ public class PictureViewModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 }
